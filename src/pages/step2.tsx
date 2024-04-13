@@ -10,12 +10,7 @@ export const Step2Page = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (!selected.plan || selected.plans.length === 0) {
-      alert("Please select a plan");
-    }else{
-      navigate("/step-3");
-    }
-    
+    navigate("/step-3");
   };
   const getBack = (e) => {
     e.preventDefault();
