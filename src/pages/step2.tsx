@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { PlanContext } from "../assets/context/PlanContext.1";
+import { PlanContext } from "../context/PlanContext.1";
 import { plans } from "../assets/plans";
 // import { plans } from "../assets/plans";
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { PlanContext } from "./PlanContext.1";
-import {  addons, plans } from "../plans";
+import {  addons, plans } from "../assets/plans";
 export type Price = {
   monthly: string;
   yearly: string;

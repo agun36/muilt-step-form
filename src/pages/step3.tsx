@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router';
 import { addons } from '../assets/plans';
-import { PlanContext } from '../assets/context/PlanContext.1';
+import { PlanContext } from '../context/PlanContext.1';
 
 export const Step3Page = () => {
   const navigate = useNavigate();

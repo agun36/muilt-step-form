@@ -1,7 +1,7 @@
 
 import { Navigation } from "../navigation";
 import "./styles.scss";
-import { PlanProvider } from "../../assets/context/planContext";
+import { PlanProvider } from "../../context/planContext";
 import React from "react";
 
 export const FormLayout = ({ children }) => {
