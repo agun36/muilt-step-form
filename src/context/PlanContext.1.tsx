@@ -1,5 +1,5 @@
 import React from "react";
-import { Addon, Plan } from "./planContext";
+import { Addon, Plan } from "../utils/schemas";
 
 
 
