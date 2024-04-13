@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { PlanContext } from "./PlanContext.1";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { createContext, useCallback, useEffect, useState } from "react";
 import {  addons, plans } from "../assets/plans";
 import { Selected, Addon } from "../utils/schemas";
 
 
-
+export const PlanContext = createContext<any>(undefined);
 export const PlanProvider = ({ children }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [selected, setSelected] = useState<Selected>({
@@ -45,6 +45,8 @@ useEffect(() => {
     total: total,
   }));
 }, [calculateTotal]);
+
+
 const toggleChecked = () => {
   setIsChecked(prevState => !prevState);
 };

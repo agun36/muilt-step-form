@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router';
 import { addons } from '../assets/plans';
-import { PlanContext } from '../context/PlanContext.1';
+import { PlanContext } from '../context/planContext';
+
 
 export const Step3Page = () => {
   const navigate = useNavigate();
-  const { selected, handleCheckboxChange } = React.useContext(PlanContext);
+  const { selected, handleCheckboxChange } = useContext(PlanContext);
 
   // const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
 

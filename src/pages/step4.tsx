@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router';
-import { PlanContext } from '../context/PlanContext.1';
+
 import { plans } from '../assets/plans';
+import { PlanContext } from '../context/planContext';
 
 
 
 export const Step4Page = () => {
   const navigate = useNavigate();
-  const { isChecked, selected, changePlan } = React.useContext(PlanContext);
+  const { isChecked, selected, changePlan } = useContext(PlanContext);
   const [hasChanged, setHasChanged] = useState(false);
 
 

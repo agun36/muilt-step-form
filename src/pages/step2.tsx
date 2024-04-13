@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
-import { PlanContext } from "../context/PlanContext.1";
 import { plans } from "../assets/plans";
+import { PlanContext } from "../context/planContext";
 // import { plans } from "../assets/plans";
 
 export const Step2Page = () => {
   const navigate = useNavigate();
-  const { toggleChecked, isChecked, selected, selectPlan } = React.useContext(PlanContext);
+  const { toggleChecked, isChecked, selected, selectPlan } = useContext(PlanContext);
 
   const submitForm = (e) => {
     e.preventDefault();
