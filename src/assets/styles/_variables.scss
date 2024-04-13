@@ -1,0 +1,55 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+// Import your fonts here
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+// Primary colors
+$marine-blue: hsl(213, 96%, 18%);
+$purplish-blue: hsl(243, 100%, 62%);
+$pastel-blue: hsl(228, 100%, 84%);
+$light-blue: hsl(206, 94%, 87%);
+$strawberry-red: hsl(354, 84%, 57%);
+
+// Neutral colors
+$cool-gray: rgb(150, 153, 171);
+$light-gray: hsl(229, 24%, 87%);
+$magnolia: hsl(217, 100%, 97%);
+$alabaster: hsl(231, 100%, 99%);
+$white-000: hsl(0, 0%, 100%);
+
+$custom-colors: (
+  "marine-blue": $marine-blue,
+  "purplish-blue": $purplish-blue,
+  "pastel-blue": $pastel-blue,
+  "light-blue": $light-blue,
+  "strawberry-red": $strawberry-red,
+  "cool-gray": $cool-gray,
+  "light-gray": $light-gray,
+  "magnolia": $magnolia,
+  "alabaster": $alabaster,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$spacers: (
+  0: 0,
+  1: 1rem,
+  2: 1.3rem,
+  3: 1.5rem,
+  4: 1.8rem,
+  "4_5": 2rem,
+  5: 2.5rem,
+  "5_5": 3.6rem,
+  6: 6rem,
+  7: 7rem,
+  8: 8rem,
+  9: 9rem,
+  10: 12rem,
+);
+
+
+
+$headings-font-family: "Ubuntu", sans-serif;
+$headings-font-weight: 700;

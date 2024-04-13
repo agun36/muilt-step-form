@@ -1,0 +1,172 @@
+import React, { useCallback, useEffect, useState } from "react";
+import { PlanContext } from "./PlanContext.1";
+import {  addons, plans } from "../plans";
+export type Price = {
+  monthly: string;
+  yearly: string;
+};
+export type Addons = {
+  id: number;
+  title: string;
+  description: string;
+  price: Price;
+};
+
+export type Addon = {
+  id: number;
+  title: string;
+  price: Price;
+  description: string;
+};
+
+
+
+export type Plan = {
+  id: number;
+  name: string;
+  price: Price;
+  image: string;
+};
+
+export type AvailablePlan ={
+  name: string;
+};
+
+
+export type Selected = {
+  plan: Plan;
+  plans: Plan[];
+  addons: Addons[];
+  availablePlan: AvailablePlan[];
+  addon: Addon;
+  total: number;
+};
+
+
+export const PlanProvider = ({ children }) => {
+  const [isChecked, setIsChecked] = useState(false);
+  const [selected, setSelected] = useState<Selected>({
+  plan: plans[0], // Initialize with the first plan
+  plans: [],
+  addons: [], // Initialize with an empty array
+  availablePlan:[{
+    name: 'arcade'
+  },
+  {
+    name: 'advanced'
+  },
+  {
+    name: 'pro'
+  }],
+  addon:addons[0], // Add this line
+  total: Number(plans[0].price.monthly.slice(1)), // Initialize with the price of the first plan
+});
+
+
+
+// Inside PlanProvider component
+const calculateTotal = useCallback(() => {
+  let total = 0;
+  if (selected.plan) {
+    total += isChecked ? parseFloat(selected.plan.price.yearly.replace(/[^0-9.-]+/g,"")) : parseFloat(selected.plan.price.monthly.replace(/[^0-9.-]+/g,""));
+  }
+  selected.addons.forEach(addon => {
+    total += isChecked ? parseFloat(addon.price.yearly.replace(/[^0-9.-]+/g,"")) : parseFloat(addon.price.monthly.replace(/[^0-9.-]+/g,""));
+  });
+  return total;
+}, [isChecked, selected.plan, selected.addons]);
+
+useEffect(() => {
+  const total = calculateTotal();
+  setSelected(prevState => ({
+    ...prevState,
+    total: total,
+  }));
+}, [calculateTotal]);
+const toggleChecked = () => {
+  setIsChecked(prevState => !prevState);
+};
+
+  const updateSelectedPlan = (plan): void => {
+    setSelected(prevState => ({
+      ...prevState,
+      plan: plan,
+    }));
+    setSelected(prevState => ({
+      ...prevState,
+      total: calculateTotal()
+    }));
+  };
+
+  const updateSelectedAddon = (addon) => {
+    setSelected(prevState => {
+      // Check if the addon is already selected
+      const isAlreadySelected = prevState.addons.some(selectedAddon => selectedAddon.price === addon.price);
+  
+      if (isAlreadySelected) {
+        // If the addon is already selected, remove it from the array
+        return { ...prevState, addons: prevState.addons.filter(selectedAddon => selectedAddon.price !== addon.price) };
+      } else {
+        // If the addon is not selected, add it to the array
+        return { ...prevState, addons: [...prevState.addons, addon] };
+      }
+    });
+    setSelected(prevState => ({
+      ...prevState,
+      total: calculateTotal() // Add the addon price to the total
+    }));
+  };
+  const selectPlan = (plan) => {
+  const monthlyPrice = parseFloat(plan.price.monthly.replace(/[^0-9.-]+/g,""));
+// let yearlyPrice = parseFloat(plan.price.yearly.replace(/[^0-9.-]+/g,""));
+  if (plan && plan.price) {
+    setSelected(prevState => ({
+      ...prevState,
+      plan: plan,
+
+      total: monthlyPrice, // Convert the price string to a number and then back to a string
+    }));
+  } else {
+    console.error('Plan or plan price is undefined');
+  }
+}
+const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, addon: Addon) => {
+  if (e.target.checked) {
+    setSelected(prevState => {
+      if (!prevState.addons.some(selectedAddon => selectedAddon.id === addon.id)) {
+        return {
+          ...prevState,
+          addons: [...prevState.addons, addon]
+        };
+      } else {
+        return prevState;
+      }
+    });
+  } else {
+    setSelected(prevState => ({
+      ...prevState,
+      addons: prevState.addons.filter(selectedAddon => selectedAddon.id !== addon.id)
+    }));
+    setSelected(prevState => ({
+      ...prevState,
+      total: calculateTotal()
+    }));
+  }
+};
+const changePlan = (newPlanName) => {
+  const newPlan = plans.find(plan => plan.name === newPlanName);
+  if (newPlan) {
+    setSelected(prevState => ({
+      ...prevState,
+      plan: newPlan,
+    }));
+  }
+};
+
+
+  return (
+    <PlanContext.Provider value={{changePlan, toggleChecked, isChecked, handleCheckboxChange, selectPlan, selected, updateSelectedPlan, updateSelectedAddon }}>
+      {children}
+    </PlanContext.Provider>
+  );
+};

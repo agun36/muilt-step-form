@@ -1,0 +1,30 @@
+@import "./variables";
+
+.form-control {
+  background: $white-000;
+  // border: 0.1rem solid rgba($color: $grey-100, $alpha: 0.5);
+  border-radius: 0.8rem;
+  min-height: 4.5rem;
+  font-size: 1.5rem;
+  &:focus,
+  &:active {
+    box-shadow: none !important;
+    outline: none !important;
+    // border: 0.1rem solid $primary-500;
+  }
+
+  &::placeholder {
+    // color: $grey-100;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1.4rem;
+  }
+}
+
+select.form-control {
+  overflow: hidden;
+  overflow: -moz-hidden-unscrollable;
+  background: url("https://api.iconify.design/pepicons/angle-down.svg")
+    no-repeat right;
+  background-color: $white-000;
+  background-position: 98%;
+}

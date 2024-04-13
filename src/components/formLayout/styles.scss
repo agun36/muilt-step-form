@@ -1,0 +1,90 @@
+@import "../../assets/styles/variables";
+
+.layout-wrapper {
+  padding: 2rem;
+  display: flex;
+  min-height: 100vh;
+
+  .content-wrapper {
+    width: calc(100% - 33rem); // remove the width of the side navigation
+    height: calc(100vh - 4rem); // remove the top and bottom padding
+    display: flex;
+    flex-direction: column;
+    .content {
+      padding: 3rem 6rem;
+      .card{
+        border-color: $marine-blue;
+      }
+      .form-select-link{
+        appearance: none;
+        background: none;
+        color: $marine-blue;
+        text-decoration: underline;
+        border: none;
+        cursor: pointer;
+      }
+      .form-switch{
+        input[type="checkbox"] {
+          
+          background-color: $marine-blue;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$white-000}'/%3e%3c/svg%3e");
+          &:before {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='red'/%3e%3c/svg%3e");
+          }
+          &:checked {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$white-000}'/%3e%3c/svg%3e");
+          }
+          &:focus {
+            outline: none; // remove the default outline
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$white-000}'/%3e%3c/svg%3e");
+            box-shadow: none; // add a custom focus ring
+          }
+        }
+      }
+      .invalid-feedback{
+        text-align: right;
+        
+        &.form-error-email{
+          // margin-top: -1rem;
+        
+        }
+      }
+      .valid-feedback{
+        text-align: right;
+
+      }
+      
+    }
+  }
+
+  //Mobile styles
+  @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 0;
+    .content-wrapper {
+      width: 100%;
+      height: calc(100vh - 20vh); 
+      background-color: $magnolia;
+      .content {
+        padding: 0 2rem;
+        margin-top: -4vh;    
+        .card{
+          border-color: $marine-blue !important;
+          &.card-content::after{
+            content: '';
+            height: 3rem;
+            width: 1rem;
+            background-color: $white-000;
+            position: absolute;
+            top: -2rem;
+            left: 60%;
+            transform: translateX(-60%);
+
+            transform: rotate(30deg) ;
+          }
+        }
+        
+      }
+    }
+  }
+}
