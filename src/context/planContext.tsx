@@ -66,9 +66,6 @@ export const PlanProvider = ({ children }) => {
         return { ...prevState, addons: [...prevState.addons, addon] };
       }
     });
-    setSelected(prevState => ({
-      ...prevState,
-    }));
   };
   const selectPlan = (plan) => {
     const monthlyPrice = parseFloat(plan.price.monthly.replace(/[^0-9.-]+/g, ""));
