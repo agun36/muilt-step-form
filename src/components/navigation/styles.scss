@@ -3,11 +3,11 @@
 .navigation-wrapper {
   background-image: url("../../assets/images/bg-sidebar-desktop.svg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  border-radius: 2rem;
   width: 33rem;
-  height: calc(100vh - 4rem); // remove the top and bottom padding
+  min-height: calc(100vh - 4rem); // remove the top and bottom padding
   padding: 3rem;
-
   .nav-link {
     display: flex;
     column-gap: 0.7rem;
@@ -51,7 +51,8 @@
   //Mobile styles
   @media (max-width: 900px) {
     background-image: url("../../assets/images/bg-sidebar-mobile.svg");
-    height: 20vh;
+    min-height: 20vh;
+    border-radius: 0;
     display: flex;
     justify-content: center;
     column-gap: 2rem;

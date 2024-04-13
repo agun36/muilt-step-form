@@ -7,7 +7,7 @@
 
   .content-wrapper {
     width: calc(100% - 33rem); // remove the width of the side navigation
-    height: calc(100vh - 4rem); // remove the top and bottom padding
+    min-height: calc(100vh - 4rem); // remove the top and bottom padding
     display: flex;
     flex-direction: column;
     .content {
@@ -58,7 +58,7 @@
     padding: 0;
     .content-wrapper {
       width: 100%;
-      height: calc(100vh - 20vh); 
+      min-height: calc(100vh - 20vh); 
       background-color: $magnolia;
       .content {
         padding: 0 2rem;
