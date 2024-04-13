@@ -11,7 +11,7 @@ export const Step3Page = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (!handleCheckboxChange) {
+    if (!handleCheckboxChange || !selected.plan || selected.addons.length === 0) {
       alert("Please select a plan");
       return;
     }
@@ -24,7 +24,7 @@ export const Step3Page = () => {
     navigate("/step-2");
   }
   return (
-    <form>
+    <>
 
       <div className="content">
         <div className="card card-content border-0  py-5 px-3">
@@ -82,6 +82,6 @@ export const Step3Page = () => {
           Next Step
         </button>
       </div>
-    </form>
+    </>
   )
 }

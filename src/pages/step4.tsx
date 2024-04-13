@@ -26,7 +26,7 @@ const getBack = (e) => {
   navigate("/step-3");
 }
   return (
-    <form>
+    <>
       <div className="content">
         <div className="card card-content border-0  py-5 px-3">
           <div className="content-title">
@@ -102,7 +102,7 @@ const getBack = (e) => {
           Next Step
         </button>
       </div>
-    </form>
+    </>
 
   )
 }
