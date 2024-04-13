@@ -22,7 +22,7 @@ export const Step2Page = () => {
   }
 
   return (
-    <form>
+    <>
       <div className="content">
         <div className="card card-content border-0  py-5 px-3" >
           <div className={`card-body d-flex flex-column `}>
@@ -71,6 +71,6 @@ export const Step2Page = () => {
           Next Step
         </button>
       </div>
-    </form>
+    </>
   );
 };
