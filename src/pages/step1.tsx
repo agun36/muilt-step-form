@@ -46,8 +46,8 @@ export const Step1Page = () => {
       phone: '',
     },
     validate,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: () => {
+      // alert(JSON.stringify(values, null, 2));
       navigate('/step-2');
     },
   });
@@ -152,10 +152,8 @@ export const Step1Page = () => {
           className="btn btn-marine-blue btn-lg"
           type="button"
           onClick={() => {
-            if (formik.isValid && !formik.dirty) {
+            if (formik.isValid && formik.dirty) {
               formik.handleSubmit();
-            }else{
-              navigate('/step-2');
             }
           }}
         >
