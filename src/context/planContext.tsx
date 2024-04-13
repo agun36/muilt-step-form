@@ -56,10 +56,6 @@ const toggleChecked = () => {
       ...prevState,
       plan: plan,
     }));
-    setSelected(prevState => ({
-      ...prevState,
-      total: calculateTotal()
-    }));
   };
 
   const updateSelectedAddon = (addon) => {
@@ -77,7 +73,6 @@ const toggleChecked = () => {
     });
     setSelected(prevState => ({
       ...prevState,
-      total: calculateTotal() // Add the addon price to the total
     }));
   };
   const selectPlan = (plan) => {
@@ -110,10 +105,6 @@ const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, addon: Add
     setSelected(prevState => ({
       ...prevState,
       addons: prevState.addons.filter(selectedAddon => selectedAddon.id !== addon.id)
-    }));
-    setSelected(prevState => ({
-      ...prevState,
-      total: calculateTotal()
     }));
   }
 };
