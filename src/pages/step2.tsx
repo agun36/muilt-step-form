@@ -20,7 +20,7 @@ export const Step2Page = () => {
   return (
     <>
       <div className="content">
-        <div className="card card-content border-0  py-5 px-3" >
+        <div className="card  card-content border-0  py-5 px-3" >
           <div className={`card-body d-flex flex-column `}>
             <h1 className="text-marine-blue">Select your plan</h1>
             <p className="text-cool-gray">You have the option of monthly or yearly billing.</p>
