@@ -48,7 +48,7 @@ export const Step1Page = () => {
     validate,
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
-      // navigate('/step-2');
+      navigate('/step-2');
     },
   });
 
@@ -154,6 +154,8 @@ export const Step1Page = () => {
           onClick={() => {
             if (formik.isValid && !formik.dirty) {
               formik.handleSubmit();
+            }else{
+              navigate('/step-2');
             }
           }}
         >
