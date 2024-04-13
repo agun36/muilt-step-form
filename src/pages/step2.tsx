@@ -16,6 +16,10 @@ export const Step2Page = () => {
     }
     navigate("/step-3");
   };
+  const getBack = (e) => {
+    e.preventDefault();
+    navigate("/step-1");
+  }
 
   return (
     <form>
@@ -54,7 +58,9 @@ export const Step2Page = () => {
       </div>
 
       <div className="bg-white mt-auto text-end p-5 p-md-6 d-flex justify-content-between ">
-        <button className="btn text-cool-gray fs-4 fw-bold" type="button">
+        <button className="btn text-cool-gray fs-4 fw-bold" type="button"
+        onClick={getBack}
+        >
           Go Back
         </button>
         <button

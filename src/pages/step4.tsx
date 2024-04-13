@@ -21,6 +21,10 @@ const submitForm = (e) => {
   }
 };
 
+const getBack = (e) => {
+  e.preventDefault();
+  navigate("/step-3");
+}
   return (
     <form>
       <div className="content">
@@ -85,7 +89,9 @@ const submitForm = (e) => {
         </div>
       </div>
       <div className="bg-white mt-auto text-end p-5 p-md-6 d-flex justify-content-between">
-        <button className="btn text-cool-gray fs-4 fw-bold" type="button">
+        <button className="btn text-cool-gray fs-4 fw-bold" type="button"
+        onClick={getBack}
+        >
           Go Back
         </button>
         <button
